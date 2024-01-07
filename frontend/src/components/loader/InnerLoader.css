@@ -1,0 +1,40 @@
+.spinner-container {
+    position: relative;
+}
+
+.spinner-container .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.spinner-container .loader {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ff5f62;
+    box-shadow: 48px 0 #ff5f62, -48px 0 #ff5f62;
+    position: relative;
+    animation: flash 0.7s ease-out infinite alternate;
+}
+
+@keyframes flash {
+    0% {
+        background-color: #FFF2;
+        box-shadow: 48px 0 #FFF2, -48px 0 #ff5f62;
+    }
+    50% {
+        background-color: #ff5f62;
+        box-shadow: 48px 0 #FFF2, -48px 0 #FFF2;
+    }
+    100% {
+        background-color: #FFF2;
+        box-shadow: 48px 0 #ff5f62, -48px 0 #FFF2;
+    }
+}
