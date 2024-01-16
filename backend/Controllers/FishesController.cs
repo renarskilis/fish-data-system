@@ -1,4 +1,5 @@
 using FishDataSystem.Data;
+using FishDataSystem.Data.Interfaces;
 using FishDataSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,20 +8,29 @@ namespace FishDataSystem.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class FishesController(AppDbContext context) : ControllerBase
+public class FishesController : ControllerBase
 {
-    // GET: api/fishes
+    private readonly AppDbContext _appDbContext;
+    private readonly IFishRepository _fishRepository;
+    
+    public FishesController(AppDbContext appDbContext, IFishRepository fishRepository)
+    {
+        _appDbContext = appDbContext;
+        _fishRepository = fishRepository;
+    }
+
+    // GET: api/Fishes
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Fish>>> GetFishes()
     {
-        return await context.Fishes.ToListAsync();
+        return await _appDbContext.Fishes.ToListAsync();
     }
 
-    // GET: api/fishes/5
+    // GET: api/Fishes/{id}
     [HttpGet("{id:int}")]
     public async Task<ActionResult<Fish>> GetFish(int id)
     {
-        var fish = await context.Fishes.FindAsync(id);
+        var fish = await _appDbContext.Fishes.FindAsync(id);
 
         if (fish == null)
         {
@@ -30,15 +40,22 @@ public class FishesController(AppDbContext context) : ControllerBase
         return fish;
     }
     
-    // DELETE: api/fishes - delete all records
+    // GET: api/Fishes/{parameter}
+    [HttpGet("{parameter}")]
+    public async Task<ActionResult<List<Fish>>> GetFishesByParameter(string parameter)
+    {
+        return await _fishRepository.GetFishesByParameter(parameter);
+    }
+    
+    // DELETE: api/Fishes
     [HttpDelete]
     public async Task<IActionResult> DeleteAllRecords()
     {
         try
         {
-            var allRecords = await context.Fishes.ToListAsync();
-            context.Fishes.RemoveRange(allRecords);
-            await context.SaveChangesAsync();
+            var allRecords = await _appDbContext.Fishes.ToListAsync();
+            _appDbContext.Fishes.RemoveRange(allRecords);
+            await _appDbContext.SaveChangesAsync();
             return Ok();
         }
         catch (Exception ex)

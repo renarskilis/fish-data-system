@@ -7,6 +7,10 @@ class fishesApi {
   getFishes() {
     return axios.get(FISHES_API_BASE_URL)
   }
+
+  getFishesByParameter(parameter: string) {
+    return axios.get(FISHES_API_BASE_URL + '/' + parameter)
+  }
     
   deleteAllFishes() {
     return axios.delete(FISHES_API_BASE_URL)

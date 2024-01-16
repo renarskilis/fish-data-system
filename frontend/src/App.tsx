@@ -6,14 +6,15 @@ import './App.css'
 
 const App: React.FC = () => {
 
-  const DataTable = lazy(() => pMinDelay(import('./views/DataTable'), 500))
+  const FishesTable = lazy(() => pMinDelay(import('./views/FishesTable'), 500))
+  const FishesTableByParameter = lazy(() => pMinDelay(import('./views/FishesTableByParameter'), 500))
 
   return (
     <Suspense fallback={<PageLoader/>}>
       <Routes>
-        <Route path="/" element={<DataTable/>}/>
-        <Route path="/table" element={<DataTable/>}/>
-        <Route path="/graphic-by-years" element={<DataTable/>}/>
+        <Route path="/" element={<FishesTable/>}/>
+        <Route path="/fishes" element={<FishesTable/>}/>
+        <Route path="/fishes-by-parameter" element={<FishesTableByParameter/>}/>
       </Routes>
     </Suspense>
   )

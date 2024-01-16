@@ -16,11 +16,11 @@ const Sidebar = () => {
           <ul className="nav flex-column">
             <li className="nav-item">
               <Link className="nav-link d-flex align-items-center gap-2 active"
-                aria-current="page" to="/table">Tabula (Visi dati)</Link>
+                aria-current="page" to="/fishes">Zivis</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link d-flex align-items-center gap-2" to="/graphic-by-years">
-                Grafiks (Gadu griezumā)</Link>
+              <Link className="nav-link d-flex align-items-center gap-2" to="/fishes-by-parameter">
+                Zivis (pēc parametra)</Link>
             </li>
           </ul>
 

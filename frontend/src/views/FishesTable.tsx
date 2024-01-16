@@ -11,9 +11,9 @@ import {ExclamationCircleFilled} from '@ant-design/icons'
 import Modal from 'antd/es/modal'
 import dataImportApi from '../services/dataImportApi'
 import InnerLoader from '../components/loader/InnerLoader'
-import './DataTable.css'
+import './FishesTable.css'
 
-const DataTable: React.FC = () => {
+const FishesTable: React.FC = () => {
 
   const [fishes, setFishes] = useState<Fish[]>([])
   const {confirm} = Modal
@@ -116,8 +116,7 @@ const DataTable: React.FC = () => {
           <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div
               className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              {/* eslint-disable-next-line react/no-unescaped-entities */}
-              <h1 className="h2">Datu tabula "Metāli Baltijas jūras un Rīgas līča zivīs"</h1>
+              <h1 className="h2">Zivis</h1>
               <div className="btn-toolbar mb-2 mb-md-0">
                 <div className="btn-group me-2">
                   <div className="px-1">
@@ -135,6 +134,8 @@ const DataTable: React.FC = () => {
             </div>
 
             <p className="pb-3">
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              <b>Datu tabula "Metāli Baltijas jūras un Rīgas līča zivīs"</b><br/>
               Informācija par zivju (asaru un reņģu) nozvejas vietu, laiku, izmēru, masu, kā
               arī testēšanas rezultātus par Cd, Cu, Pb un Zn saturu šo zivju aknās un Hg saturu zivju
               filejās (<a target="_blank"
@@ -209,4 +210,4 @@ const DataTable: React.FC = () => {
   )
 }
 
-export default DataTable
+export default FishesTable
